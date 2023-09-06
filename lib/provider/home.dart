@@ -1,8 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:my_portfolio/models/header_item.dart';
-import 'package:my_portfolio/utils/constants.dart';
-import 'package:my_portfolio/utils/utils.dart';
 
 final homeProvider = ChangeNotifierProvider((ref) => HomeProvider());
 
@@ -10,6 +10,8 @@ class HomeProvider extends ChangeNotifier {
   final contactKey = GlobalKey();
   final portfolioKey = GlobalKey();
   final servicesKey = GlobalKey();
+  final educationKey = GlobalKey();
+  final experienceKey = GlobalKey();
   final aboutKey = GlobalKey();
   final homeKey = GlobalKey();
 
@@ -38,6 +40,16 @@ class HomeProvider extends ChangeNotifier {
     await _scroll(context);
   }
 
+  Future<void> scrollToEducation() async {
+    final context = educationKey.currentContext;
+    await _scroll(context);
+  }
+
+  Future<void> scrollToExperience() async {
+    final context = experienceKey.currentContext;
+    await _scroll(context);
+  }
+
   Future _scroll(BuildContext? context) async {
     if (context != null) {
       await Scrollable.ensureVisible(
@@ -53,14 +65,16 @@ class HomeProvider extends ChangeNotifier {
       scrollToContact();
     } else if (nameOnTap.title == "Home") {
       scrollToHome();
+    } else if (nameOnTap.title == "Education") {
+      scrollToEducation();
+    } else if (nameOnTap.title == "Experience") {
+      scrollToExperience();
     } else if (nameOnTap.title == "Services") {
       scrollToService();
-    } else if (nameOnTap.title == "Portfolio") {
+    } else if (nameOnTap.title == "Projects") {
       scrollToPortfolio();
-    } else if (nameOnTap.title == "About") {
+    } else if (nameOnTap.title == "About Me") {
       scrollToAbout();
-    } else if (nameOnTap.title == "Blog") {
-      Utilty.openUrl(AppConstants.mediumUrl);
     }
   }
 }

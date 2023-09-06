@@ -31,6 +31,7 @@ final List<DesignProcess> designProcesses = [
 class ServiceSection extends StatelessWidget {
   ServiceSection({Key? key}) : super(key: key);
   final whatIDo = [
+    /*
     NameIconColor(
       title: "Mobile App Development",
       iconData: Icons.mobile_friendly,
@@ -51,6 +52,7 @@ class ServiceSection extends StatelessWidget {
       iconData: Icons.code,
       color: Colors.orange[400]!,
     ),
+     */
   ];
 
   @override
@@ -73,37 +75,6 @@ class ServiceSection extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Productive ,\n   Experienced",
-                style: GoogleFonts.josefinSans(
-                  fontWeight: FontWeight.w900,
-                  height: 1.8,
-                  letterSpacing: 2,
-                  fontSize: 18.0,
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Utilty.openUrl(
-                      "https://github.com/AgnelSelvan/AgnelSelvan.github.io/raw/main/assets/files/Agnel-Selvan.pdf");
-                },
-                child: MouseRegion(
-                  cursor: SystemMouseCursors.click,
-                  child: Text(
-                    "DOWNLOAD CV",
-                    style: GoogleFonts.josefinSans(
-                      color: kPrimaryColor,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
           const SizedBox(
             height: 20,
           ),

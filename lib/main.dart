@@ -23,14 +23,12 @@ class MyApp extends StatelessWidget {
     return Consumer(
       builder: (context, ref, _) {
         return ThemeProvider(
-          initTheme: ref.watch(themeProvider).isDarkMode
-              ? MyThemes.darkTheme
-              : MyThemes.lightTheme,
+          initTheme: MyThemes.darkTheme,
           child: MaterialApp(
-            title: "Agnel Selvan",
+            title: "Giovanni Gambale",
             debugShowCheckedModeBanner: false,
-            themeMode: ref.watch(themeProvider).themeMode,
-            theme: MyThemes.lightTheme,
+            themeMode: ThemeMode.dark,
+            theme: MyThemes.darkTheme,
             darkTheme: MyThemes.darkTheme,
             initialRoute: Routes.initial,
             onGenerateRoute: RouterGenerator.generateRoute,

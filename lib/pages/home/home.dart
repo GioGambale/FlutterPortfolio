@@ -1,4 +1,3 @@
-import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,10 +10,11 @@ import 'package:my_portfolio/pages/home/components/portfolio_stats.dart';
 import 'package:my_portfolio/pages/home/components/project.dart';
 import 'package:my_portfolio/pages/home/components/service.dart';
 import 'package:my_portfolio/provider/home.dart';
-import 'package:my_portfolio/provider/theme.dart';
 import 'package:my_portfolio/utils/globals.dart';
 import 'package:my_portfolio/utils/screen_helper.dart';
-import 'package:my_portfolio/widgets/switch.dart';
+
+import 'components/education.dart';
+import 'components/experience.dart';
 
 class Home extends ConsumerStatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -61,6 +61,12 @@ class _HomeState extends ConsumerState<Home>
                 AboutSection(
                   key: _homeProvider.aboutKey,
                 ),
+                EducationSection(
+                  key: _homeProvider.educationKey,
+                ),
+                ExperienceSection(
+                  key: _homeProvider.experienceKey,
+                ),
                 ServiceSection(
                   key: _homeProvider.servicesKey,
                 ),
@@ -74,7 +80,7 @@ class _HomeState extends ConsumerState<Home>
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      "Portfolio",
+                      "Projects",
                       style: GoogleFonts.josefinSans(
                         fontWeight: FontWeight.w900,
                         fontSize: 36,
@@ -84,7 +90,7 @@ class _HomeState extends ConsumerState<Home>
                       height: 5,
                     ),
                     Text(
-                      "Here are some of my Previous Work :)",
+                      "Here are some of my works",
                       style: GoogleFonts.josefinSans(
                         color: Colors.grey[400],
                         fontSize: 14,
@@ -112,90 +118,16 @@ class _HomeState extends ConsumerState<Home>
             ),
           ),
         ),
-        Header(
-          themeSwitch: ThemeSwitcher(
-              clipper: const ThemeSwitcherBoxClipper(),
-              builder: (context) {
-                return CustomSwitch(
-                  value: ref.watch(themeProvider).isDarkMode,
-                  onChanged: (val) {
-                    ref.read(themeProvider).changeTheme(val);
-                    ThemeSwitcher.of(context).changeTheme(
-                        theme: ref.read(themeProvider).getCurrentTheme,
-                        isReversed: false // default: false
-                        );
-                  },
-                );
-              }),
-        ),
+        const Header(),
       ],
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return ThemeSwitchingArea(
-      child: Scaffold(
+    return Scaffold(
         key: Globals.scaffoldKey,
-        endDrawer: Drawer(
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16.0,
-                vertical: 24.0,
-              ),
-              child: ListView.separated(
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    onTap: () {
-                      if (Globals.scaffoldKey.currentState != null) {
-                        if (Globals.scaffoldKey.currentState!.isEndDrawerOpen) {
-                          Navigator.pop(context);
-                          _homeProvider.scrollBasedOnHeader(
-                              HeaderRow.headerItems[index]);
-                        }
-                      }
-                    },
-                    leading: Icon(
-                      HeaderRow.headerItems[index].iconData,
-                    ),
-                    title: Text(
-                      HeaderRow.headerItems[index].title,
-                      style: const TextStyle(),
-                    ),
-                    trailing: HeaderRow.headerItems[index].isDarkTheme != null
-                        ? HeaderRow.headerItems[index].isDarkTheme!
-                            ? SizedBox(
-                                width: 50,
-                                child: CustomSwitch(
-                                  value: ref.watch(themeProvider).isDarkMode,
-                                  onChanged: (val) {
-                                    ref.read(themeProvider).changeTheme(val);
-                                    ThemeSwitcher.of(context).changeTheme(
-                                        theme: ref
-                                            .read(themeProvider)
-                                            .getCurrentTheme,
-                                        isReversed: false // default: false
-                                        );
-                                  },
-                                ),
-                              )
-                            : null
-                        : null,
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(
-                    height: 10.0,
-                  );
-                },
-                itemCount: HeaderRow.headerItems.length,
-              ),
-            ),
-          ),
-        ),
         body: _buildPage(),
-      ),
     );
   }
 }

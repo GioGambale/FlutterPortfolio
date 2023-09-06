@@ -1,10 +1,15 @@
-import 'package:flutter/material.dart';
-
 class NameIconColor {
   final String title;
-  final IconData iconData;
-  final Color color;
+  final String desc;
+  final String logo;
+  final String url;
+  final String azienda;
+  final String luogo;
+  final String dataDa;
+  final String dataA;
 
   NameIconColor(
-      {required this.title, required this.iconData, required this.color});
+      {required this.title, required this.desc, required this.logo,
+        required this.azienda, required this.url, required this.luogo,
+        required this.dataDa, required this.dataA});
 }

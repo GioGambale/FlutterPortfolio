@@ -34,9 +34,6 @@ class ProjectModel {
       techUsed: [
         TechnologyConstants.flutter,
         TechnologyConstants.firebase,
-        TechnologyConstants.flask,
-        TechnologyConstants.python,
-        TechnologyConstants.razorPay
       ],
       buttonText: "Github Link",
     ),
@@ -47,8 +44,6 @@ class ProjectModel {
       appPhotos: AppConstants.crossTheRoadImage,
       projectLink: "https://github.com/AgnelSelvan/Cross-the-road",
       techUsed: [
-        TechnologyConstants.swift,
-        TechnologyConstants.sceneKit,
       ],
       buttonText: "Github Link",
     ),
@@ -82,8 +77,6 @@ class ProjectModel {
       appPhotos: AppConstants.computerStoreImage,
       projectLink: "https://github.com/AgnelSelvan/computer-store.git",
       techUsed: [
-        TechnologyConstants.php,
-        TechnologyConstants.razorPay,
       ],
     ),
     ProjectModel(
@@ -94,7 +87,6 @@ class ProjectModel {
       appPhotos: AppConstants.personalFaceImage,
       projectLink: "https://github.com/AgnelSelvan/Emotion-Recognition.git",
       techUsed: [
-        TechnologyConstants.python,
       ],
     ),
   ];
@@ -104,7 +96,7 @@ class ProjectModel {
       project: "Flutter App",
       title: "Flutter Web Portfolio",
       description: "",
-      appPhotos: AppConstants.portfolioGif,
+      appPhotos: AppConstants.javaImage,
       projectLink: "https://github.com/AgnelSelvan/Flutter-Web-Portfolio",
       techUsed: [],
       buttonText: "Github Link",

@@ -10,15 +10,15 @@ final List<FooterItem> footerItems = [
   FooterItem(
       iconData: Icons.location_on,
       title: "ADDRESS",
-      text1: "Mumbai, Maharashtra",
-      text2: "India",
+      text1: "Avellino, AV",
+      text2: "Italy",
       onTap: () {
         Utilty.openMyLocation();
       }),
   FooterItem(
       iconData: Icons.phone,
       title: "PHONE",
-      text1: "+91 9167877725",
+      text1: "+39 3284203995",
       text2: "",
       onTap: () {
         Utilty.openMyPhoneNo();
@@ -26,7 +26,7 @@ final List<FooterItem> footerItems = [
   FooterItem(
       iconData: Icons.mail,
       title: "EMAIL",
-      text1: "agnelselvan007@gmail.com",
+      text1: "g.gambale92@gmail.com",
       text2: "",
       onTap: () {
         Utilty.openMail();
@@ -34,7 +34,7 @@ final List<FooterItem> footerItems = [
   FooterItem(
       iconData: Icons.sms,
       title: "WHATSAPP",
-      text1: "+91 9167877725",
+      text1: "+39 3284203995",
       text2: "",
       onTap: () {
         Utilty.openWhatsapp();
@@ -141,14 +141,14 @@ Widget _buildUi(double width, BuildContext context) {
               const SizedBox(
                 height: 20.0,
               ),
-              Flex(
+              const Flex(
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Padding(
                     padding: EdgeInsets.only(bottom: 8.0),
                     child: Text(
-                      "Developed in 💛 with Flutter",
+                      "Developed by Giovanni Gambale",
                       style: TextStyle(
                         color: kCaptionColor,
                       ),

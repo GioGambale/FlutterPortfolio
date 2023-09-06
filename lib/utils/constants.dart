@@ -14,39 +14,46 @@ double getMobileMaxWidth(BuildContext context) =>
     MediaQuery.of(context).size.width * .8;
 
 class AppConstants {
-  static const linkedInUrl =
-      "https://www.linkedin.com/in/agnel-selvan-328421192/";
-  static const instagramUrl = "https://www.instagram.com/_agnel.selvan_/";
-  static const githubUrl = "https://github.com/AgnelSelvan";
-  static const mediumUrl = "https://medium.com/@agnelselvan";
+  static const linkedInUrl = "https://www.linkedin.com/in/giogambale/";
+  static const githubUrl = "https://github.com/GioGambale";
 
   static const _assets = "assets/";
-  static const _outputs = "outputs/";
-
-  static const _svg = _assets + "svg/";
-  static const guySvg = _svg + "guy.svg";
-  static const personSvg = _svg + "person.svg";
-
   static const _images = _assets + "images/";
+
+  static const logo = _images + "logo-white.png";
+  static const homepage = _images + "homepage.png";
+  static const aboutme = _images + "aboutme.png";
 
   static const _socialImages = _images + "social/";
   static const emailImage = _socialImages + "email.png";
   static const linkedInImage = _socialImages + "linkedin-logo.png";
-  static const instaImage = _socialImages + "instagram.png";
   static const githubImage = _socialImages + "github.png";
-  static const mediumImage = _socialImages + "medium.png";
 
   static const _techImages = _images + "technology/";
   static const flutterImage = _techImages + "flutter.png";
-  static const pythonImage = _techImages + "python.png";
-  static const phpImage = _techImages + "php.png";
-  static const flaskImage = _techImages + "flask.png";
   static const firebaseImage = _techImages + "firebase.png";
-  static const razorPayImage = _techImages + "razorpay.png";
-  static const cPlusImage = _techImages + "c++.png";
-  static const swiftImage = _techImages + "swift.png";
-  static const sceneKitImage = _techImages + "scenekit.jpeg";
+  static const javaImage = _techImages + "java.png";
   static const javascriptImage = _techImages + "javascript.png";
+  static const mavenImage = _techImages + "maven.png";
+  static const sonarqubeImage = _techImages + "sonar.png";
+  static const springImage = _techImages + "spring.png";
+  static const hibernateImage = _techImages + "hibernate.png";
+  static const vaadinImage = _techImages + "vaadin.png";
+  static const angularImage = _techImages + "angular.png";
+  static const jiraImage = _techImages + "jira.png";
+  static const jenkinsImage = _techImages + "jenkins.png";
+
+  static const _eduImages = _images + "education/";
+  static const unisaImages = _eduImages + "unisa.png";
+  static const upcImages = _eduImages + "upc.png";
+  static const ordineImages = _eduImages + "ordine.png";
+  static const udemyImages = _eduImages + "udemy.png";
+  static const courseraImages = _eduImages + "coursera.png";
+
+  static const _expImages = _images + "experience/";
+  static const nexsoftImages = _expImages + "nexsoft.png";
+  static const soulImages = _expImages + "soul.png";
+  static const eustemaImages = _expImages + "eustema.png";
 
   static const _projectsImages = _images + "projects/";
   static const smartStoreImage = _projectsImages + "1.jpeg";
@@ -56,14 +63,11 @@ class AppConstants {
   static const personalFaceImage = _projectsImages + "5.jpeg";
   static const computerStoreImage = _projectsImages + "6.jpeg";
 
-  static const _gifs = _outputs + "gif/";
-  static const portfolioGif = _gifs + "mobile.gif";
-
   static List<NameOnTap> socialLoginDatas = [
     NameOnTap(
-        title: emailImage,
+        title: githubImage,
         onTap: () {
-          Utilty.openMail();
+          Utilty.openUrl(githubUrl);
         }),
     NameOnTap(
         title: linkedInImage,
@@ -71,19 +75,9 @@ class AppConstants {
           Utilty.openUrl(linkedInUrl);
         }),
     NameOnTap(
-        title: instaImage,
+        title: emailImage,
         onTap: () {
-          Utilty.openUrl(instagramUrl);
-        }),
-    NameOnTap(
-        title: githubImage,
-        onTap: () {
-          Utilty.openUrl(githubUrl);
-        }),
-    NameOnTap(
-        title: mediumImage,
-        onTap: () {
-          Utilty.openUrl(mediumUrl);
+          Utilty.openMail();
         }),
   ];
 }

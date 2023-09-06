@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio/models/technology.dart';
-import 'package:my_portfolio/provider/theme.dart';
 import 'package:my_portfolio/utils/constants.dart';
 import 'package:my_portfolio/utils/screen_helper.dart';
+import 'package:my_portfolio/utils/utils.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 class AboutSection extends StatefulWidget {
@@ -44,7 +43,7 @@ class _AboutSectionState extends State<AboutSection> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(
-                        height: 15.0,
+                        height: 110.0,
                       ),
                       Text(
                         "About Me",
@@ -58,7 +57,7 @@ class _AboutSectionState extends State<AboutSection> {
                         height: 25.0,
                       ),
                       Text(
-                        "I'm Agnel Selvan, A Flutter and iOS Developer and Technical Blog Writer",
+                        "I'm Giovanni Gambale",
                         style: GoogleFonts.josefinSans(
                           fontWeight: FontWeight.bold,
                           height: 1.3,
@@ -69,7 +68,15 @@ class _AboutSectionState extends State<AboutSection> {
                         height: 10.0,
                       ),
                       const Text(
-                        "I have done my Computer Science graduation at Xavier's Institute of Engineering on 2021. I have been developing Mobile Apps for more than 1 years now. I have worked as a Team and as an Indivual in various organization and launched the apps in Playstore as well as in Appstore. In my free time I use to write Technical Blog in Medium. Always love to learn new technologies and to succeed in an environment of growth and excellence and earn a job which provides me job satisfaction and self-development and help me achieve personal as well as organisational goals.",
+                        "I'm a Software Engineer, graduated at University of Salerno on 2018, with qualification to practice Information Engineer profession (Section A) from 2023. I have worked and still work as Full Stack Developer.",
+                        style: TextStyle(
+                          color: kCaptionColor,
+                          height: 1.5,
+                          fontSize: 15.0,
+                        ),
+                      ),
+                      const Text(
+                        "I'm a computer and technology passionate individual, always love to learn new technologies and earn a job which provides me job satisfaction and self-development and help me achieve personal as well as organisational goals. In my free time I use to follow and practice various sports: soccer, basket, tennis and padel.",
                         style: TextStyle(
                           color: kCaptionColor,
                           height: 1.5,
@@ -80,7 +87,7 @@ class _AboutSectionState extends State<AboutSection> {
                         height: 20.0,
                       ),
                       const Text(
-                        "Technology I have worked with",
+                        "Tools, frameworks and technologies I have worked with",
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
@@ -97,54 +104,69 @@ class _AboutSectionState extends State<AboutSection> {
                             scrollDirection: Axis.horizontal,
                             child: Row(
                               children: TechnologyConstants.technologyLearned
-                                  .map((e) => MouseRegion(
-                                        cursor: SystemMouseCursors.click,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: ref
-                                                    .watch(themeProvider)
-                                                    .isDarkMode
-                                                ? Colors.grey[800]
-                                                : Colors.grey[200],
-                                            borderRadius:
-                                                BorderRadius.circular(4.0),
-                                          ),
-                                          margin: const EdgeInsets.symmetric(
-                                              horizontal: 5),
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 8.0, vertical: 6),
-                                          child: InkWell(
-                                            onTap: () {},
-                                            child: Center(
-                                              child: Row(
-                                                children: [
-                                                  SizedBox(
-                                                      width: 20,
-                                                      height: 20,
-                                                      child:
-                                                          Image.asset(e.logo)),
-                                                  const SizedBox(
-                                                    width: 10,
-                                                  ),
-                                                  Text(
-                                                    e.name,
-                                                    style: const TextStyle(
-                                                      fontSize: 12.0,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                    ),
-                                                  ),
-                                                ],
+                                  .map((e) => Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey[800],
+                                      borderRadius:
+                                          BorderRadius.circular(4.0),
+                                    ),
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 5),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8.0, vertical: 6),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Utilty.openUrl(e.url);
+                                      },
+                                      child: Center(
+                                        child: Row(
+                                          children: [
+                                            SizedBox(
+                                                width: 20,
+                                                height: 20,
+                                                child:
+                                                    Image.asset(e.logo)),
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            Text(
+                                              e.name,
+                                              style: const TextStyle(
+                                                fontSize: 12.0,
+                                                fontWeight:
+                                                    FontWeight.bold,
                                               ),
                                             ),
-                                          ),
+                                          ],
                                         ),
-                                      ))
+                                      ),
+                                    ),
+                                  ))
                                   .toList(),
                             ),
                           ),
                         );
                       }),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Utilty.openUrl(
+                              "https://github.com/AgnelSelvan/AgnelSelvan.github.io/raw/main/assets/files/Agnel-Selvan.pdf");
+                        },
+                        child: MouseRegion(
+                          cursor: SystemMouseCursors.click,
+                          child: Text(
+                            "DOWNLOAD CV",
+                            style: GoogleFonts.josefinSans(
+                              color: kPrimaryColor,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 16.0,
+                            ),
+                          ),
+                        ),
+                      ),
                       const SizedBox(
                         height: 70.0,
                       )
@@ -158,8 +180,8 @@ class _AboutSectionState extends State<AboutSection> {
                     ScreenHelper.isTablet(context))
                   Expanded(
                     flex: constraints.maxWidth > 720.0 ? 1 : 0,
-                    child: SvgPicture.asset(
-                      AppConstants.personSvg,
+                    child: Image.asset(
+                      AppConstants.aboutme,
                       width: constraints.maxWidth > 720.0 ? null : 350.0,
                     ),
                   ),
