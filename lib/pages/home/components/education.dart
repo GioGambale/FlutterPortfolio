@@ -46,6 +46,17 @@ class EducationSection extends StatelessWidget {
 
   final certifications = [
     NameIconColor(
+      title: "Scrum Fundamentals Certified (SMC)",
+      desc: "",
+      logo: AppConstants.scrumstudyImages,
+      url:
+          "https://www.scrumstudy.com/certification/verify?type=SFC&number=995501",
+      azienda: "",
+      luogo: "",
+      dataDa: "",
+      dataA: "",
+    ),
+    NameIconColor(
       title: "Qualified to practice",
       desc: "",
       logo: AppConstants.ordineImages,
@@ -59,7 +70,8 @@ class EducationSection extends StatelessWidget {
       title: "Flutter Development Bootcamp with Dart",
       desc: "",
       logo: AppConstants.udemyImages,
-      url: "",
+      url:
+          "https://www.udemy.com/certificate/UC-f0ae5be7-0b8f-4efa-8080-beb3edbbdf94/",
       azienda: "",
       luogo: "",
       dataDa: "",
@@ -69,7 +81,7 @@ class EducationSection extends StatelessWidget {
       title: "Kotlin for Java Developers",
       desc: "",
       logo: AppConstants.courseraImages,
-      url: "",
+      url: "https://www.coursera.org/account/accomplishments/verify/NWYQ9XMT8MR7",
       azienda: "",
       luogo: "",
       dataDa: "",
@@ -139,7 +151,7 @@ class EducationSection extends StatelessWidget {
             ),
           ),
           const SizedBox(
-              height: 30,
+            height: 30,
           ),
           Consumer(builder: (context, ref, _) {
             return Wrap(
@@ -167,7 +179,7 @@ class EducationSection extends StatelessWidget {
                                   e.title,
                                   textAlign: TextAlign.center,
                                   style: GoogleFonts.josefinSans(
-                                    color: Colors.grey[400],
+                                    color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.w800,
                                   ),
@@ -224,47 +236,60 @@ class EducationSection extends StatelessWidget {
                 runAlignment: WrapAlignment.center,
                 children: certifications
                     .map((e) => Container(
-                  height: 200,
-                  width: 200,
-                  margin: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: const Color.fromARGB(75, 12, 12, 7),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        e.title,
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.josefinSans(
-                          color: Colors.grey[400],
-                          fontSize: 18,
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        width: 80,
-                        height: 80,
+                        height: 200,
+                        width: 200,
+                        margin: const EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                          color: Colors.grey[900],
-                          borderRadius: BorderRadius.circular(80),
+                          color: const Color.fromARGB(75, 12, 12, 7),
+                          borderRadius: BorderRadius.circular(10),
                         ),
-                        child: Image.asset(
-                          e.logo,
-                        ),
-                      ),
-                    ],
-                  ),
-                ))
+                        child: e.url != ""
+                            ? _buildClickCert(e)
+                            : _buildNoClickCert(e)))
                     .toList());
           }),
         ],
       ),
+    );
+  }
+
+  Widget _buildClickCert(NameIconColor e) {
+    return InkWell(
+        onTap: () {
+          Utilty.openUrl(e.url);
+        },
+        child: _buildNoClickCert(e));
+  }
+
+  Widget _buildNoClickCert(NameIconColor e) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          e.title,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.josefinSans(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        Container(
+          width: 80,
+          height: 80,
+          decoration: BoxDecoration(
+            color: Colors.grey[900],
+            borderRadius: BorderRadius.circular(80),
+          ),
+          child: Image.asset(
+            e.logo,
+          ),
+        ),
+      ],
     );
   }
 }

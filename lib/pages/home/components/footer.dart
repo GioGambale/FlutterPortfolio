@@ -83,11 +83,14 @@ Widget _buildUi(double width, BuildContext context) {
                                   ? constraints.maxWidth / 2.0 - 20.0
                                   : constraints.maxWidth / 4.0 - 20.0,
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
                                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(
                                         footerItem.iconData,

@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:my_portfolio/models/name_color.dart';
-import 'package:my_portfolio/provider/theme.dart';
-import 'package:my_portfolio/utils/utils.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
 import '../../../models/design_process.dart';
@@ -12,48 +9,21 @@ import '../../../utils/screen_helper.dart';
 
 final List<DesignProcess> designProcesses = [
   DesignProcess(
-    title: "Learn",
-    imagePath: "assets/images/learn.png",
-    subtitle: "",
-  ),
-  DesignProcess(
     title: "Develop",
     imagePath: "assets/images/develop.png",
-    subtitle: "",
+    subtitle:
+        "I can develop your personal or professional website, e-commerce or mobile app. I can also help you with Opensource Development.",
   ),
   DesignProcess(
-    title: "Document It",
-    imagePath: "assets/images/blog.png",
-    subtitle: "",
+    title: "Teach",
+    imagePath: "assets/images/learn.png",
+    subtitle:
+        "I can give private lessons to secondary schools and universities students in Mathematics and Informatics.",
   ),
 ];
 
 class ServiceSection extends StatelessWidget {
-  ServiceSection({Key? key}) : super(key: key);
-  final whatIDo = [
-    /*
-    NameIconColor(
-      title: "Mobile App Development",
-      iconData: Icons.mobile_friendly,
-      color: Colors.green[400]!,
-    ),
-    NameIconColor(
-      title: "Web Development",
-      iconData: Icons.web,
-      color: Colors.yellow[400]!,
-    ),
-    NameIconColor(
-      title: "Technical Blog Writer",
-      iconData: Icons.article,
-      color: Colors.blue[400]!,
-    ),
-    NameIconColor(
-      title: "Github Open Source",
-      iconData: Icons.code,
-      color: Colors.orange[400]!,
-    ),
-     */
-  ];
+  const ServiceSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +46,7 @@ class ServiceSection extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const SizedBox(
-            height: 20,
+            height: 110,
           ),
           Text(
             "What I Do?",
@@ -96,120 +66,79 @@ class ServiceSection extends StatelessWidget {
               fontSize: 14.0,
             ),
           ),
-          SizedBox(
-            height: ScreenHelper.isDesktop(context) ? 140 : 70,
+          const SizedBox(
+            height: 60,
           ),
           Consumer(builder: (context, ref, _) {
             return Wrap(
                 alignment: WrapAlignment.center,
                 crossAxisAlignment: WrapCrossAlignment.center,
                 runAlignment: WrapAlignment.center,
-                children: whatIDo
-                    .map((e) => Container(
-                          height: 200,
+                spacing: 100,
+                children: designProcesses
+                    .map(
+                      (e) => Container(
+                          height: 300,
                           width: 200,
                           margin: const EdgeInsets.all(20),
                           decoration: BoxDecoration(
-                            color: ref.watch(themeProvider).isDarkMode
-                                ? const Color.fromARGB(75, 12, 12, 7)
-                                : Colors.grey[50],
+                            color: const Color.fromARGB(75, 12, 12, 7),
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Container(
-                                width: 80,
-                                height: 80,
-                                decoration: BoxDecoration(
-                                  color: ref.watch(themeProvider).isDarkMode
-                                      ? Colors.grey[900]
-                                      : Colors.grey[200],
-                                  borderRadius: BorderRadius.circular(80),
-                                ),
-                                child: Icon(
-                                  e.iconData,
-                                  color: e.color,
-                                  size: 52,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 20,
-                              ),
-                              Text(
-                                e.title,
-                                textAlign: TextAlign.center,
-                                style: GoogleFonts.josefinSans(
-                                  color: ref.watch(themeProvider).isDarkMode
-                                      ? Colors.grey[400]
-                                      : Colors.grey[800],
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w800,
-                                ),
-                              )
-                            ],
-                          ),
-                        ))
+                          child: _buildServices(e)),
+                    )
                     .toList());
           }),
-          const SizedBox(
-            height: 80.0,
-          ),
-          Container(
-            alignment: Alignment.center,
-            child: LayoutBuilder(
-              builder: (_context, constraints) {
-                return ResponsiveGridView.builder(
-                  padding: const EdgeInsets.all(0.0),
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: ResponsiveGridDelegate(
-                    mainAxisSpacing: 20.0,
-                    crossAxisSpacing: 20.0,
-                    maxCrossAxisExtent: ScreenHelper.isMobile(context)
-                        ? constraints.maxWidth / 1.0
-                        : ScreenHelper.isTablet(context)
-                            ? constraints.maxWidth / 2.0
-                            : 450.0,
-                    childAspectRatio: 5,
-                  ),
-                  itemBuilder: (BuildContext context, int index) {
-                    return Container(
-                      alignment: Alignment.center,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                designProcesses[index].imagePath,
-                                width: 40.0,
-                              ),
-                              const SizedBox(
-                                width: 15.0,
-                              ),
-                              Text(
-                                designProcesses[index].title,
-                                style: GoogleFonts.josefinSans(
-                                  fontSize: 20.0,
-                                  fontWeight: FontWeight.w700,
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                  itemCount: designProcesses.length,
-                );
-              },
-            ),
-          )
         ],
       ),
+    );
+  }
+
+  Widget _buildServices(DesignProcess e) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        const SizedBox(
+          height: 25,
+        ),
+        Text(
+          e.title,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.josefinSans(
+            color: Colors.white,
+            fontSize: 18,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+        const SizedBox(
+          height: 25,
+        ),
+        Container(
+          width: 80,
+          height: 80,
+          decoration: BoxDecoration(
+            color: Colors.grey[900],
+            borderRadius: BorderRadius.circular(80),
+          ),
+          child: Image.asset(
+            e.imagePath,
+          ),
+        ),
+        const SizedBox(
+          height: 35,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+          child: Text(
+            e.subtitle,
+            textAlign: TextAlign.center,
+            style: GoogleFonts.josefinSans(
+              color: Colors.grey[400],
+              fontSize: 15,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

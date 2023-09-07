@@ -58,11 +58,13 @@ class HeaderRow extends StatelessWidget {
           onTap: () {},
           iconData: Icons.work,
         ),
+        /*
         NameOnTap(
           title: "Projects",
           onTap: () {},
           iconData: Icons.work,
         ),
+        */
         NameOnTap(
           title: "Contact",
           onTap: () {},

@@ -70,6 +70,7 @@ class _HomeState extends ConsumerState<Home>
                 ServiceSection(
                   key: _homeProvider.servicesKey,
                 ),
+                /*
                 SizedBox(
                   key: _homeProvider.portfolioKey,
                   height: 100.0,
@@ -111,6 +112,7 @@ class _HomeState extends ConsumerState<Home>
                 const SizedBox(
                   height: 50.0,
                 ),
+                */
                 Footer(
                   key: _homeProvider.contactKey,
                 )

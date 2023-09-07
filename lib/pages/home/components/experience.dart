@@ -131,7 +131,7 @@ class ExperienceSection extends StatelessWidget {
                                         child: Text(
                                           e.title,
                                           style: GoogleFonts.josefinSans(
-                                            color: Colors.grey[400],
+                                            color: Colors.white,
                                             fontSize: 18,
                                             fontWeight: FontWeight.w800,
                                           ),
