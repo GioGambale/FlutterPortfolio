@@ -153,7 +153,7 @@ class _AboutSectionState extends State<AboutSection> {
                       GestureDetector(
                         onTap: () {
                           Utilty.openUrl(
-                              "https://github.com/AgnelSelvan/AgnelSelvan.github.io/raw/main/assets/files/Agnel-Selvan.pdf");
+                              "https://github.com/GioGambale/GioGambale.github.io/raw/main/assets/files/CV_Gambale.pdf");
                         },
                         child: MouseRegion(
                           cursor: SystemMouseCursors.click,
