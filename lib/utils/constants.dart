@@ -81,4 +81,37 @@ class AppConstants {
           Utilty.openMail();
         }),
   ];
+
+  static List<NameOnTap> headerItems = [
+    NameOnTap(
+      title: "Home",
+      iconData: Icons.home,
+      onTap: () {},
+    ),
+    NameOnTap(
+      title: "About Me",
+      onTap: () {},
+      iconData: Icons.info,
+    ),
+    NameOnTap(
+      title: "Education",
+      onTap: () {},
+      iconData: Icons.school,
+    ),
+    NameOnTap(
+      title: "Experience",
+      onTap: () {},
+      iconData: Icons.work,
+    ),
+    NameOnTap(
+      title: "Services",
+      onTap: () {},
+      iconData: Icons.work,
+    ),
+    NameOnTap(
+      title: "Contact",
+      onTap: () {},
+      iconData: Icons.contact_mail,
+    ),
+  ];
 }

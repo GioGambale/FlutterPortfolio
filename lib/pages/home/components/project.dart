@@ -51,9 +51,7 @@ class ProjectSection extends StatelessWidget {
               return Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                    color: ref.watch(themeProvider).isDarkMode
-                        ? const Color.fromARGB(75, 12, 12, 7)
-                        : Colors.grey[100],
+                    color: const Color.fromARGB(75, 12, 12, 7),
                     borderRadius: BorderRadius.circular(5)),
                 child: Flex(
                   direction: ScreenHelper.isMobile(context)
@@ -70,7 +68,6 @@ class ProjectSection extends StatelessWidget {
                         height: 250,
                       ),
                     ),
-
                     const SizedBox(
                       width: 20,
                       height: 20,

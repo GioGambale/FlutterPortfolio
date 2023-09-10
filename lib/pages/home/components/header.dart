@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_portfolio/models/header_item.dart';
 import 'package:my_portfolio/provider/home.dart';
 import 'package:my_portfolio/utils/constants.dart';
-import 'package:my_portfolio/utils/globals.dart';
 import 'package:my_portfolio/utils/screen_helper.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
@@ -19,8 +17,10 @@ class HeaderLogo extends StatelessWidget {
           children: [
             Image.asset(
               AppConstants.logo,
-              width: 100,
-              height: 100,
+              width: ScreenHelper.isDesktop(context)
+                  ? 100 : 50,
+              height: ScreenHelper.isDesktop(context)
+                  ? 100 : 50,
             ),
           ],
         ),
@@ -32,46 +32,6 @@ class HeaderLogo extends StatelessWidget {
 class HeaderRow extends StatelessWidget {
   const HeaderRow({Key? key}) : super(key: key);
 
-  static List<NameOnTap> get headerItems => [
-        NameOnTap(
-          title: "Home",
-          iconData: Icons.home,
-          onTap: () {},
-        ),
-        NameOnTap(
-          title: "About Me",
-          onTap: () {},
-          iconData: Icons.info,
-        ),
-        NameOnTap(
-          title: "Education",
-          onTap: () {},
-          iconData: Icons.school,
-        ),
-        NameOnTap(
-          title: "Experience",
-          onTap: () {},
-          iconData: Icons.work,
-        ),
-        NameOnTap(
-          title: "Services",
-          onTap: () {},
-          iconData: Icons.work,
-        ),
-        /*
-        NameOnTap(
-          title: "Projects",
-          onTap: () {},
-          iconData: Icons.work,
-        ),
-        */
-        NameOnTap(
-          title: "Contact",
-          onTap: () {},
-          iconData: Icons.contact_mail,
-        ),
-      ];
-
   @override
   Widget build(BuildContext context) {
     return ResponsiveVisibility(
@@ -82,7 +42,7 @@ class HeaderRow extends StatelessWidget {
       child: Consumer(
         builder: (context, ref, child) {
           return Row(children: [
-            ...headerItems
+            ...AppConstants.headerItems
                 .map(
                   (item) => MouseRegion(
                     cursor: SystemMouseCursors.click,
@@ -138,14 +98,12 @@ class Header extends StatelessWidget {
           children: [
             const HeaderLogo(),
             GestureDetector(
-              onTap: () {
-                Globals.scaffoldKey.currentState?.openEndDrawer();
-              },
+              onTap: () => Scaffold.of(context).openEndDrawer(),
               child: const Icon(
                 Icons.menu,
                 size: 28.0,
               ),
-            )
+            ),
           ],
         ),
       ),

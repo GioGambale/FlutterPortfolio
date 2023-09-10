@@ -89,126 +89,249 @@ class ExperienceSection extends StatelessWidget {
                 runAlignment: WrapAlignment.start,
                 children: experiences
                     .map(
-                      (e) => Row(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Utilty.openUrl(e.url);
-                            },
-                            child: Container(
-                              width: 80,
-                              height: 80,
-                              decoration: BoxDecoration(
-                                color: Colors.grey[900],
-                                borderRadius: BorderRadius.circular(80),
-                              ),
-                              child: Image.asset(
-                                e.logo,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 30,
-                          ),
-                          Container(
-                            width: width - 50,
-                            margin: const EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(75, 12, 12, 7),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 20, left: 20),
-                                        child: Text(
-                                          e.title,
-                                          style: GoogleFonts.josefinSans(
-                                            color: Colors.white,
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 20, right: 20),
-                                        child: Text(
-                                          e.dataDa + " - " + e.dataA,
-                                          style: GoogleFonts.josefinSans(
-                                            color: Colors.grey[400],
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w800,
-                                          ),
-                                        ),
-                                      ),
-                                    ]),
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 20),
-                                        child: Text(
-                                          e.azienda,
-                                          style: GoogleFonts.josefinSans(
-                                            color: Colors.grey[400],
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(right: 20),
-                                        child: Text(
-                                          e.luogo,
-                                          style: GoogleFonts.josefinSans(
-                                            color: Colors.grey[400],
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w500,
-                                          ),
-                                        ),
-                                      ),
-                                    ]),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.only(top: 20, left: 20),
-                                  child: Text(
-                                    e.desc,
-                                    style: GoogleFonts.josefinSans(
-                                      color: Colors.grey[400],
-                                      fontSize: 15,
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 20,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                      (e) => width == kDesktopMaxWidth ? createExpRow(e, width) : createExpCol(e, width),
                     )
                     .toList());
           }),
         ],
       ),
+    );
+  }
+
+  Row createExpRow(NameIconColor e, double width) {
+    return Row(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Utilty.openUrl(e.url);
+                          },
+                          child: Container(
+                            width: 80,
+                            height: 80,
+                            decoration: BoxDecoration(
+                              color: Colors.grey[900],
+                              borderRadius: BorderRadius.circular(80),
+                            ),
+                            child: Image.asset(
+                              e.logo,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 30,
+                        ),
+                        Container(
+                          width: width - 50,
+                          margin: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(75, 12, 12, 7),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 20, left: 20),
+                                      child: Text(
+                                        e.title,
+                                        style: GoogleFonts.josefinSans(
+                                          color: Colors.white,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w800,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 20, right: 20),
+                                      child: Text(
+                                        e.dataDa + " - " + e.dataA,
+                                        style: GoogleFonts.josefinSans(
+                                          color: Colors.grey[400],
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w800,
+                                        ),
+                                      ),
+                                    ),
+                                  ]),
+                              const SizedBox(
+                                height: 5,
+                              ),
+                              Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(left: 20),
+                                      child: Text(
+                                        e.azienda,
+                                        style: GoogleFonts.josefinSans(
+                                          color: Colors.grey[400],
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(right: 20),
+                                      child: Text(
+                                        e.luogo,
+                                        style: GoogleFonts.josefinSans(
+                                          color: Colors.grey[400],
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
+                                  ]),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 20, left: 20, right: 15),
+                                child: Text(
+                                  e.desc,
+                                  style: GoogleFonts.josefinSans(
+                                    color: Colors.grey[400],
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    );
+  }
+
+  Column createExpCol(NameIconColor e, double width) {
+    return Column(
+      children: [
+        InkWell(
+          onTap: () {
+            Utilty.openUrl(e.url);
+          },
+          child: Container(
+            width: 80,
+            height: 80,
+            decoration: BoxDecoration(
+              color: Colors.grey[900],
+              borderRadius: BorderRadius.circular(80),
+            ),
+            child: Image.asset(
+              e.logo,
+            ),
+          ),
+        ),
+        const SizedBox(
+          width: 30,
+        ),
+        Container(
+          width: width - 15,
+          margin: const EdgeInsets.symmetric(vertical: 20),
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(75, 12, 12, 7),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                  mainAxisAlignment:
+                  MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 20, left: 20),
+                      child: Text(
+                        e.title,
+                        style: GoogleFonts.josefinSans(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 20, right: 20),
+                      child: Text(
+                        e.dataDa + " - " + e.dataA,
+                        style: GoogleFonts.josefinSans(
+                          color: Colors.grey[400],
+                          fontSize: 12,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                    ),
+                  ]),
+              const SizedBox(
+                height: 5,
+              ),
+              Row(
+                  mainAxisAlignment:
+                  MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding:
+                      const EdgeInsets.only(left: 20),
+                      child: Text(
+                        e.azienda,
+                        style: GoogleFonts.josefinSans(
+                          color: Colors.grey[400],
+                          fontSize: 11,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                      const EdgeInsets.only(right: 20),
+                      child: Text(
+                        e.luogo,
+                        style: GoogleFonts.josefinSans(
+                          color: Colors.grey[400],
+                          fontSize: 11,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                  ]),
+              const SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding:
+                const EdgeInsets.only(top: 20, left: 20, right: 15),
+                child: Text(
+                  e.desc,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.josefinSans(
+                    color: Colors.grey[400],
+                    fontSize: 10,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
