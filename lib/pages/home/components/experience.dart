@@ -45,6 +45,16 @@ class ExperienceSection extends StatelessWidget {
       dataDa: "11/2018",
       dataA: "04/2021",
     ),
+    NameIconColor(
+      title: "Internship Student",
+      desc: "Realization of an automated solution for functional and regression testing of Web Applications, using the Selenium platform.",
+      logo: AppConstants.deloitteImages,
+      url: "https://www2.deloitte.com/it/it.html",
+      azienda: "Deloitte",
+      luogo: "Avellino",
+      dataDa: "07/2015",
+      dataA: "09/2015",
+    ),
   ];
 
   @override

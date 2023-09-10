@@ -52,6 +52,7 @@ class AppConstants {
   static const scrumstudyImages = _eduImages + "scrumstudy.png";
 
   static const _expImages = _images + "experience/";
+  static const deloitteImages = _expImages + "deloitte.png";
   static const nexsoftImages = _expImages + "nexsoft.png";
   static const soulImages = _expImages + "soul.png";
   static const eustemaImages = _expImages + "eustema.png";
