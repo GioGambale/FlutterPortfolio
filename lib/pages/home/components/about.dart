@@ -98,46 +98,48 @@ class _AboutSectionState extends State<AboutSection> {
                       ),
                       Consumer(builder: (context, ref, _) {
                         return ScrollConfiguration(
-                          behavior: ScrollConfiguration.of(context)
-                              .copyWith(scrollbars: false),
+                          behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
                           child: SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(
                               children: TechnologyConstants.technologyLearned
-                                  .map((e) => Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.grey[800],
-                                      borderRadius:
-                                          BorderRadius.circular(4.0),
-                                    ),
-                                    margin: const EdgeInsets.symmetric(
-                                        horizontal: 5),
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8.0, vertical: 6),
-                                    child: InkWell(
-                                      onTap: () {
-                                        Utilty.openUrl(e.url);
-                                      },
-                                      child: Center(
-                                        child: Row(
-                                          children: [
-                                            SizedBox(
-                                                width: 20,
-                                                height: 20,
-                                                child:
-                                                    Image.asset(e.logo)),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            Text(
-                                              e.name,
-                                              style: const TextStyle(
-                                                fontSize: 12.0,
-                                                fontWeight:
-                                                    FontWeight.bold,
+                                  .map((e) => MouseRegion(
+                                    cursor: SystemMouseCursors.click,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.grey[800],
+                                        borderRadius:
+                                            BorderRadius.circular(4.0),
+                                      ),
+                                      margin: const EdgeInsets.symmetric(
+                                          horizontal: 5),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 8.0, vertical: 6),
+                                      child: InkWell(
+                                        onTap: () {
+                                          Utilty.openUrl(e.url);
+                                        },
+                                        child: Center(
+                                          child: Row(
+                                            children: [
+                                              SizedBox(
+                                                  width: 20,
+                                                  height: 20,
+                                                  child:
+                                                      Image.asset(e.logo)),
+                                              const SizedBox(
+                                                width: 10,
                                               ),
-                                            ),
-                                          ],
+                                              Text(
+                                                e.name,
+                                                style: const TextStyle(
+                                                  fontSize: 12.0,
+                                                  fontWeight:
+                                                      FontWeight.bold,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
